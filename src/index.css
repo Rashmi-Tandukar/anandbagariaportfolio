@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   GLOBAL DESIGN SYSTEM
+   New brand palette + semantic tokens. These variables are the single
+   source of truth for the redesign work that follows in later steps.
+   Existing Tailwind color tokens (forest, gold, ink, canvas, etc.) are
+   left untouched on purpose so current sections keep rendering exactly
+   as before until we intentionally restyle them.
+   ========================================================================== */
+:root {
+  /* Brand palette (exact values supplied) */
+  --primary: #78c841;      /* main brand green — primary actions, active states */
+  --primary-hover: #6ab432; /* slightly deeper for hover/pressed states */
+  --secondary: #b4e50d;    /* bright lime — hovers, gradients, glow accents */
+  --orange: #ff9b2f;       /* stats, timeline highlights, secondary CTA accents */
+  --red: #fb4141;          /* sparing use — badges, small decorative accents */
+
+  /* Neutral surfaces — warm, premium off-whites that keep the palette
+     from feeling loud. Chosen for strong contrast against the greens. */
+  --background: #f8f7f2;         /* page background (matches existing canvas) */
+  --surface: #ffffff;            /* cards, panels, elevated content */
+  --surface-secondary: #f1f6ea;  /* soft green-tinted band for alternating sections */
+
+  /* Text */
+  --text-primary: #1f332a;    /* headings, body copy — near-black forest green */
+  --text-secondary: #4a544d;  /* supporting copy, captions */
+  --text-inverse: #f8f7f2;    /* text placed on dark/brand-colored surfaces */
+
+  /* Borders */
+  --border: rgba(31, 51, 42, 0.12);
+  --border-strong: rgba(31, 51, 42, 0.24);
+  --border-primary: rgba(120, 200, 65, 0.35);
+
+  /* Shadows — soft, dark, slightly cool so colored elements stay premium */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 18, 0.06), 0 1px 1px rgba(15, 23, 18, 0.04);
+  --shadow-md: 0 8px 24px -6px rgba(15, 23, 18, 0.14), 0 2px 8px -2px rgba(15, 23, 18, 0.08);
+  --shadow-lg: 0 24px 48px -12px rgba(15, 23, 18, 0.24), 0 8px 16px -4px rgba(15, 23, 18, 0.10);
+
+  /* Glow accents for the brand colors, used sparingly on hover/active states */
+  --glow-primary: 0 0 0 4px rgba(120, 200, 65, 0.18);
+  --glow-secondary: 0 0 24px rgba(180, 229, 13, 0.35);
+
+  /* Radius scale */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Spacing scale — for consistent section/component rhythm going forward */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-section: clamp(4rem, 8vw, 7rem); /* vertical section padding */
+
+  /* Motion */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 450ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-charcoal antialiased;
+    font-feature-settings: 'ss01' on, 'cv01' on;
+    background: var(--background);
+  }
+
+  /* Typography hierarchy — defaults only. Section components already set
+     explicit Tailwind size utilities per-heading and will continue to
+     override these safely (utility classes win over @layer base). */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    line-height: 1.65;
+  }
+
+  /* Accessible, on-brand focus states for every interactive element */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Link hover behavior */
+  a {
+    transition: color var(--transition-fast), opacity var(--transition-fast);
+  }
+
+  a:hover {
+    color: var(--primary);
+  }
+
+  /* Button base transition (variant colors stay component-defined) */
+  button {
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      box-shadow var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+  }
+}
+
+/* Deep forest, gold-tinted scrollbar to match the existing theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #081512;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f3a30;
+  border-radius: 9999px;
+  border: 2px solid #081512;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2f5445;
+}
+
+* {
+  scrollbar-color: #1f3a30 #081512;
+  scrollbar-width: thin;
+}
