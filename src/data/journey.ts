@@ -1,100 +1,61 @@
-import { Rocket, Leaf, Factory, Building2, Landmark, Mountain, Tv, type LucideIcon } from 'lucide-react';
 import type { JourneyItem } from '../types/profile';
 
 export interface JourneyMilestone extends JourneyItem {
-  icon: LucideIcon;
+  /** Small uppercase label shown above the title (e.g. "THE BEGINNING"). */
+  eyebrow: string;
 }
 
 export const journeyMilestones: JourneyMilestone[] = [
   {
     id: 'founding',
     period: '2000',
+    eyebrow: 'The Beginning',
     title: 'Founded Nimbus',
     description:
-      'Started Nimbus as a modest trading enterprise \u2014 the first step in what would grow into one of Nepal\u2019s leading agribusiness groups.',
+      'Anand Bagaria founded Nimbus with a vision to build a sustainable business creating value for farmers, consumers and the community.',
     category: 'Entrepreneurship',
-    icon: Rocket,
-    // Drop a company/milestone photo at public/images/journey/founding.jpg and
-    // point this at it, e.g. '/images/journey/founding.jpg'. Leave empty to use
-    // the icon illustration instead.
-    image: '',
+    image: '/images/journey/founding.png',
+    imageFit: 'contain',
   },
   {
     id: 'supply-chain',
     period: 'Early Growth',
-    title: 'Building Supply-Chain Depth',
+    eyebrow: 'Early Growth',
+    title: 'Supply Chain & Distribution',
     description:
-      'Expanded into feed milling and agri-processing, working closely with farmers and distributors to build a business rooted in long-term partnership.',
+      'Built a strong supply-chain and distribution network, creating the foundation for sustainable growth.',
     category: 'Agribusiness',
-    icon: Leaf,
-    // Drop a company/milestone photo at public/images/journey/supply-chain.jpg and
-    // point this at it, e.g. '/images/journey/supply-chain.jpg'. Leave empty to use
-    // the icon illustration instead.
-    image: '',
+    image: '/images/ventures/nimbus.png',
+    imageFit: 'contain',
   },
   {
     id: 'diversification',
     period: 'Expansion',
-    title: 'Diversifying Into Oil & FMCG',
+    eyebrow: 'Expansion',
+    title: 'Oil & FMCG',
     description:
-      'Grew Nimbus into a diversified group spanning edible oil refining and FMCG distribution, deepening its footprint across Nepal\u2019s economy.',
+      'Expanded into oil, food processing and FMCG, building brands serving households across Nepal.',
     category: 'Growth',
-    icon: Factory,
-    // Drop a company/milestone photo at public/images/journey/diversification.jpg and
-    // point this at it, e.g. '/images/journey/diversification.jpg'. Leave empty to use
-    // the icon illustration instead.
-    image:'',
+    image: '/images/ventures/brands/sunaulokiran.jpg',
   },
   {
     id: 'probiotech',
     period: 'Leadership',
-    title: 'Managing Director, Probiotech Industries',
+    eyebrow: 'Leadership',
+    title: 'Probiotech & Beyond',
     description:
-      'Took on leadership of Probiotech Industries alongside Nimbus, extending an operator\u2019s discipline across another corner of Nepal\u2019s agribusiness sector.',
+      'Expanded into animal nutrition, research and biotechnology, strengthening the diversified business group.',
     category: 'Leadership',
-    icon: Building2,
-    // Drop a company/milestone photo at public/images/journey/probiotech.jpg and
-    // point this at it, e.g. '/images/journey/probiotech.jpg'. Leave empty to use
-    // the icon illustration instead.
-    image: '',
+    image: '/images/profile/profile2.png',
   },
   {
-    id: 'chambers',
-    period: 'Industry & Policy',
-    title: 'FNCCI & NICCI Leadership',
-    description:
-      'Joined the Executive Committee of FNCCI and serves as Treasurer of the Nepal India Chamber of Commerce & Industry, shaping Nepal\u2019s business community from within.',
-    category: 'Industry',
-    icon: Landmark,
-    // Drop a company/milestone photo at public/images/journey/chambers.jpg and
-    // point this at it, e.g. '/images/journey/chambers.jpg'. Leave empty to use
-    // the icon illustration instead.
-    image: '',
-  },
-  {
-    id: 'climate',
-    period: 'Climate Initiative',
-    title: 'Co-Founded Himalayan Climate Initiative',
-    description:
-      'Co-founded the Himalayan Climate Initiative to build climate resilience into Nepal\u2019s economy \u2014 pairing business growth with long-term responsibility.',
-    category: 'Sustainability',
-    icon: Mountain,
-    // Drop a company/milestone photo at public/images/journey/climate.jpg and
-    // point this at it, e.g. '/images/journey/climate.jpg'. Leave empty to use
-    // the icon illustration instead.
-    image: '',
-  },
-  {
-    id: 'shark-tank',
+    id: 'present',
     period: 'Present',
-    title: 'Investor & Mentor, Shark Tank Nepal',
+    eyebrow: 'Industry & Beyond',
+    title: 'FNCCI, NICCI & Shark Tank Nepal',
     description:
-      'Serves as a Shark on Shark Tank Nepal, backing and mentoring a new generation of Nepali founders with the same discipline built over two decades.',
+      'Contributing to industry leadership, supporting entrepreneurs and investing in the next generation.',
     category: 'Investment',
-    icon: Tv,
-    // Drop a company/milestone photo at public/images/journey/shark-tank.jpg and
-    // point this at it, e.g. '/images/journey/shark-tank.jpg'. Leave empty to use
-    // the icon illustration instead.
-    image: '',
+    image: '/images/profile/profile3.jpg',
   },
 ];

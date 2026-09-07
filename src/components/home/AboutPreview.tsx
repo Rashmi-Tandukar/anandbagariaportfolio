@@ -87,7 +87,7 @@ export default function AboutPreview() {
   });
 
   return (
-    <section id="about" className="relative overflow-hidden bg-canvas py-20 sm:py-28">
+    <section id="about" className="relative overflow-hidden bg-canvas px-[5vw] py-20 sm:py-28">
       {/* Background: light dot grid + one soft glow — kept subtle so the
           section never feels heavier than its content. */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -107,10 +107,35 @@ export default function AboutPreview() {
         />
       </div>
 
-      <div className="relative mx-auto w-full max-w-[1300px] px-[5vw]">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+      <div className="relative mx-auto w-full max-w-[1300px]">
+        {/* ---------------------------- Header ---------------------------- */}
+        <motion.div
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center"
+        >
+          <span className="inline-flex items-center gap-2.5 rounded-full bg-brand-primary/10 px-3 py-1">
+            <Leaf className="h-3 w-3 text-brand-primary" strokeWidth={2.5} />
+            <span className="text-xs font-semibold uppercase tracking-[0.24em] text-graphite">About Me</span>
+          </span>
+
+          <h2 className="font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.14] tracking-[-0.01em] text-charcoal">
+            Built on{' '}
+            <span className="bg-gradient-to-r from-[var(--primary-hover)] to-brand-primary bg-clip-text text-transparent">
+              Vision
+            </span>
+            , Focused on{' '}
+            <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+              Impact
+            </span>
+          </h2>
+        </motion.div>
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-14 sm:mt-16">
           {/* -------------------------- Left: image -------------------------- */}
-          <motion.div {...fadeIn(0, 'left')} className="order-1 lg:col-span-5">
+          <motion.div {...fadeIn(0, 'left')} className="order-2 lg:order-1 lg:col-span-5">
             <div className="relative mx-auto max-w-[380px] lg:max-w-[460px]">
               {/* Decorative dashed ring, sits behind the frame */}
               <motion.div
@@ -191,29 +216,8 @@ export default function AboutPreview() {
           </motion.div>
 
           {/* ------------------------ Right: content ------------------------ */}
-          <div className="order-2 lg:col-span-7">
-            <motion.div {...fadeIn(0.05, 'right')} className="flex items-center gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
-                <Leaf className="h-3 w-3 text-brand-primary" strokeWidth={2.5} />
-              </span>
-              <span className="text-xs font-semibold uppercase tracking-[0.24em] text-graphite">About Me</span>
-            </motion.div>
-
-            <motion.h2
-              {...fadeIn(0.1, 'right')}
-              className="mt-3 font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.14] tracking-[-0.01em] text-charcoal"
-            >
-              Built on{' '}
-              <span className="bg-gradient-to-r from-[var(--primary-hover)] to-brand-primary bg-clip-text text-transparent">
-                Vision
-              </span>
-              , Focused on{' '}
-              <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
-                Impact
-              </span>
-            </motion.h2>
-
-            <motion.p {...fadeIn(0.15, 'right')} className="mt-4 max-w-xl text-sm leading-relaxed text-graphite sm:text-base">
+          <div className="order-1 lg:order-2 lg:col-span-7">
+            <motion.p {...fadeIn(0.15, 'right')} className="max-w-xl text-sm leading-relaxed text-graphite sm:text-base">
               <HighlightedBio text={anandProfile.shortBio} />
             </motion.p>
 

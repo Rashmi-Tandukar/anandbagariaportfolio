@@ -67,12 +67,22 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   body {
     @apply text-charcoal antialiased;
     font-feature-settings: 'ss01' on, 'cv01' on;
     background: var(--background);
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  img,
+  svg {
+    max-width: 100%;
+    height: auto;
   }
 
   /* Typography hierarchy — defaults only. Section components already set

@@ -1,7 +1,6 @@
 import { motion, useReducedMotion, useInView, animate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { Tv, ArrowRight } from 'lucide-react';
-import Container from '../common/Container';
 import Reveal from '../common/Reveal';
 import { investmentFocusAreas, showStats } from '../../data/investmentFocus';
 
@@ -33,19 +32,19 @@ export default function Investments() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="investments" className="relative overflow-hidden bg-canvas py-24 sm:py-32">
+    <section id="investments" className="relative overflow-hidden bg-canvas px-[5vw] py-24 sm:py-32">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-[-8%] top-[5%] h-[340px] w-[340px] rounded-full bg-gold/[0.07] blur-[120px]" />
         <div className="absolute right-[-10%] bottom-[8%] h-[380px] w-[380px] rounded-full bg-forest/[0.09] blur-[130px]" />
       </div>
 
-      <Container>
+      <div className="relative mx-auto w-full max-w-[1300px]">
         <Reveal>
-          <div className="flex flex-col gap-3">
+          <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-sage-deep">
               Investments
             </span>
-            <h2 className="max-w-2xl font-serif text-3xl leading-tight text-charcoal sm:text-4xl">
+            <h2 className="font-serif text-3xl leading-tight text-charcoal sm:text-4xl">
               Backing Nepal&rsquo;s next generation of builders
             </h2>
           </div>
@@ -159,7 +158,7 @@ export default function Investments() {
             })}
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

@@ -13,7 +13,7 @@ const expertiseCards = [
   {
     title: 'Entrepreneurship',
     description: 'Building and scaling ventures',
-    position: 'left-0 top-2',
+    position: 'left-[-4%] top-[1%]',
     duration: 7,
     Icon: TrendingUp,
     iconClass: 'bg-gradient-to-br from-brand-primary to-[var(--primary-hover)]',
@@ -21,7 +21,7 @@ const expertiseCards = [
   {
     title: 'Agribusiness',
     description: 'Creating value from the ground up',
-    position: 'right-0 top-32',
+    position: 'right-[-4%] top-[48%]',
     duration: 8,
     Icon: Leaf,
     iconClass: 'bg-gradient-to-br from-brand-secondary to-brand-primary',
@@ -29,7 +29,7 @@ const expertiseCards = [
   {
     title: 'Investment',
     description: 'Backing long-term opportunities',
-    position: 'left-2 bottom-2',
+    position: 'left-[-2%] bottom-[2%]',
     duration: 7.5,
     Icon: BarChart3,
     iconClass: 'bg-gradient-to-br from-brand-orange to-[#ffb35c]',
@@ -172,16 +172,23 @@ export default function Hero() {
         <div className="hero-content">
           <motion.span
             {...fadeUp(0)}
-            className="mb-5 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-subtle bg-white/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-graphite backdrop-blur"
+            className="mb-5 inline-flex max-w-full flex-col gap-1 rounded-2xl border border-subtle bg-white/60 px-4 py-2 text-graphite backdrop-blur sm:inline-flex sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2 sm:gap-y-1 sm:rounded-full sm:py-1.5"
           >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-secondary opacity-75" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-primary" />
+            <span className="flex items-center gap-2">
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-secondary opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-primary" />
+              </span>
+              <span className="text-xs font-bold text-brand-primary">
+                {anandProfile.name}
+              </span>
             </span>
-            <span className="normal-case tracking-normal font-bold text-brand-primary">
-              {anandProfile.name}
+            <span className="text-[11px] font-semibold uppercase leading-snug tracking-[0.08em] sm:hidden">
+              Entrepreneur &middot; Business Leader &middot; Investor
             </span>
-            <span>&middot; Entrepreneur &middot; Business Leader &middot; Investor</span>
+            <span className="hidden text-xs font-semibold uppercase tracking-[0.22em] sm:inline">
+              &middot; Entrepreneur &middot; Business Leader &middot; Investor
+            </span>
           </motion.span>
 
           <h1 className="max-w-xl font-serif text-[clamp(2.1rem,3.6vw,3.9rem)] font-bold leading-[1.1] tracking-[-0.02em] text-charcoal">
@@ -255,7 +262,7 @@ export default function Hero() {
           onMouseMove={handleVisualMouseMove}
           onMouseLeave={handleVisualMouseLeave}
           style={{ rotateX, rotateY, transformPerspective: 1000 }}
-          className="hero-visual relative mx-auto h-[440px] w-full max-w-md lg:h-[520px] lg:max-w-lg lg:block"
+          className="hero-visual relative mx-auto h-[360px] w-full max-w-[320px] xs:max-w-sm sm:h-[440px] sm:max-w-md lg:h-[520px] lg:max-w-lg lg:block"
         >
           {/* Rotating dashed ring accent */}
           <motion.div
@@ -308,11 +315,11 @@ export default function Hero() {
                 scale: { duration: 0.6, delay: 0.9 + i * 0.15 },
                 y: { duration, repeat: Infinity, ease: 'easeInOut', delay: 0.9 + i * 0.15 },
               }}
-              className={`expertise-card absolute ${position} flex w-44 items-start gap-2.5 rounded-xl border border-black/5 bg-white/95 p-3 shadow-[0_16px_40px_-16px_rgba(31,51,42,0.35)] backdrop-blur transition-transform duration-normal hover:-translate-y-1`}
+              className={`expertise-card absolute ${position} z-10 flex w-28 items-start gap-2 rounded-xl border border-black/5 bg-white/95 p-2.5 shadow-[0_16px_40px_-16px_rgba(31,51,42,0.35)] backdrop-blur transition-transform duration-normal hover:-translate-y-1 sm:w-36 sm:gap-2.5 sm:p-3 lg:w-44`}
               style={{ willChange: 'transform' }}
             >
-              <span className={`relative flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-charcoal ${iconClass}`}>
-                <Icon className="h-4 w-4" strokeWidth={2} />
+              <span className={`relative flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-charcoal sm:h-8 sm:w-8 ${iconClass}`}>
+                <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2} />
                 {live && (
                   <span className="absolute -right-1 -top-1 flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-red opacity-75" />
@@ -320,9 +327,9 @@ export default function Hero() {
                   </span>
                 )}
               </span>
-              <span className="flex flex-col">
-                <span className="text-xs font-semibold text-charcoal sm:text-sm">{title}</span>
-                <span className="mt-0.5 text-[11px] leading-snug text-graphite">{description}</span>
+              <span className="flex min-w-0 flex-1 flex-col">
+                <span className="break-words text-xs font-semibold leading-snug text-charcoal sm:text-sm">{title}</span>
+                <span className="mt-0.5 break-words text-[11px] leading-snug text-graphite">{description}</span>
               </span>
             </motion.div>
           ))}

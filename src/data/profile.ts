@@ -20,6 +20,20 @@ export const anandProfile: Profile = {
 
   linkedin: 'https://www.linkedin.com/in/anand-bagaria-26549b5/',
 
+  // Fill these in with the real profile/page URLs to show the icons in the
+  // Contact section's social row. Leave as '' to keep an icon hidden.
+  // PLACEHOLDER — swap for the real handle before launch.
+  instagram: 'https://www.instagram.com/anandbagaria/',
+  facebook: '',
+
+  // Fill in with a real inbox to receive inquiry-form submissions there.
+  // Leave as '' and the form will fall back to "Connect on LinkedIn" only.
+  // PLACEHOLDER — swap for the real inbox before launch.
+  email: 'contact@anandbagaria.com',
+
+  // PLACEHOLDER — swap for a real number before launch, or set to '' to hide it.
+  phone: '+977-1-4XXXXXX',
+
   roles: [
     'Managing Director, Nimbus Holdings Pvt. Ltd.',
     'Managing Director, Probiotech Industries Pvt. Ltd.',
