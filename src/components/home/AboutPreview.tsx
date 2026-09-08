@@ -1,7 +1,15 @@
 import { Fragment, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Leaf, Award, Building2, Settings2, Users, Calendar } from 'lucide-react';
+import { Leaf, Award, Building2, Settings2, Users, Calendar, Landmark } from 'lucide-react';
 import { anandProfile } from '../../data/profile';
+
+// Two short, hand-tightened paragraphs (not the full long-form bio) so this
+// column stays close in height to the portrait next to it — no scroll
+// tricks needed, just less text.
+const bioParagraphs: [string, string] = [
+  'Anand Bagaria founded Nimbus in 2000, growing it into one of Nepal\u2019s most established agribusiness groups, with operations spanning feed milling, agri-processing, and FMCG distribution.',
+  'He also leads Probiotech Industries, holds senior roles with FNCCI and NICCI, and mentors founders as an investor on Shark Tank Nepal.',
+];
 
 // Same facts already carried by the profile data — presented as a tight
 // editorial list instead of boxed cards.
@@ -51,6 +59,8 @@ const bioKeywordAccents: Record<string, string> = {
   agribusiness: 'font-semibold text-sage-deep',
   'two decades': 'font-semibold text-brand-orange',
   'Shark Tank Nepal': 'font-semibold text-[var(--primary-hover)]',
+  'Probiotech Industries': 'font-semibold text-[var(--primary-hover)]',
+  'Himalayan Climate Initiative': 'font-semibold text-sage-deep',
 };
 const keywordPattern = new RegExp(`(${Object.keys(bioKeywordAccents).join('|')})`, 'g');
 
@@ -74,6 +84,7 @@ function HighlightedBio({ text }: { text: string }) {
 export default function AboutPreview() {
   const [imageFailed, setImageFailed] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+  const [bioParaOne, bioParaTwo] = bioParagraphs;
 
   const fadeIn = (delay = 0, dir: 'left' | 'right' | 'up' = 'up') => ({
     initial: {
@@ -87,7 +98,7 @@ export default function AboutPreview() {
   });
 
   return (
-    <section id="about" className="relative overflow-hidden bg-canvas px-[5vw] py-20 sm:py-28">
+    <section id="about" className="relative bg-canvas px-[5vw] py-16 sm:py-24">
       {/* Background: light dot grid + one soft glow — kept subtle so the
           section never feels heavier than its content. */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -213,12 +224,32 @@ export default function AboutPreview() {
                 <span className="text-[11px] font-bold text-charcoal">Shark Tank Investor</span>
               </motion.div>
             </div>
+
+            {/* Pull-quote — sits under the photo so this column ends on
+                real content instead of blank space beneath the badges. */}
+            <motion.div
+              {...fadeIn(0.4, 'left')}
+              className="relative mx-auto mt-8 max-w-[380px] rounded-2xl border border-subtle bg-white/60 p-5 backdrop-blur lg:max-w-[460px]"
+            >
+              <span className="absolute -top-3 left-5 font-serif text-4xl leading-none text-brand-primary/40">
+                &ldquo;
+              </span>
+              <p className="font-serif text-sm italic leading-relaxed text-charcoal sm:text-[15px]">
+                {anandProfile.tagline}
+              </p>
+              <span className="mt-3 block text-[11px] font-semibold uppercase tracking-[0.16em] text-graphite">
+                &mdash; {anandProfile.name}
+              </span>
+            </motion.div>
           </motion.div>
 
           {/* ------------------------ Right: content ------------------------ */}
           <div className="order-1 lg:order-2 lg:col-span-7">
-            <motion.p {...fadeIn(0.15, 'right')} className="max-w-xl text-sm leading-relaxed text-graphite sm:text-base">
-              <HighlightedBio text={anandProfile.shortBio} />
+            <motion.p {...fadeIn(0.15, 'right')} className="text-sm leading-relaxed text-graphite sm:text-base">
+              <HighlightedBio text={bioParaOne} />
+            </motion.p>
+            <motion.p {...fadeIn(0.18, 'right')} className="mt-3 text-sm leading-relaxed text-graphite sm:text-base">
+              <HighlightedBio text={bioParaTwo} />
             </motion.p>
 
             {/* Compact inline stat row */}
@@ -244,19 +275,38 @@ export default function AboutPreview() {
               ))}
             </motion.div>
 
-            {/* Editorial highlight list — no boxes, just tight rows */}
+            {/* Editorial highlight list — flush-left text, matching the
+                paragraphs above exactly (no leading icon column, so nothing
+                pushes this text right of where the bio starts). */}
             <motion.div {...fadeIn(0.3, 'right')} className="mt-6 flex flex-col gap-3 border-t border-subtle pt-5">
-              {bioHighlights.map(({ title, description, Icon }) => (
-                <div key={title} className="group flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/10 text-forest transition-colors duration-normal group-hover:bg-brand-primary/20">
-                    <Icon className="h-3.5 w-3.5" strokeWidth={2} />
-                  </span>
-                  <p className="text-xs leading-relaxed text-graphite sm:text-sm">
-                    <span className="font-bold text-charcoal">{title}. </span>
-                    {description}
-                  </p>
-                </div>
+              {bioHighlights.map(({ title, description }) => (
+                <p key={title} className="text-xs leading-relaxed text-graphite sm:text-sm">
+                  <span className="font-bold text-charcoal">{title}. </span>
+                  {description}
+                </p>
               ))}
+            </motion.div>
+
+            {/* Leadership & Affiliations — the real roles list, previously
+                only surfaced as a count ("6+ Leadership Roles"). Shown as a
+                tight two-column list so it reads as substance, not filler. */}
+            <motion.div {...fadeIn(0.35, 'right')} className="mt-6 border-t border-subtle pt-5">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-secondary/15 text-sage-deep">
+                  <Landmark className="h-3.5 w-3.5" strokeWidth={2} />
+                </span>
+                <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-charcoal">
+                  Leadership &amp; Affiliations
+                </h3>
+              </div>
+              <ul className="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
+                {anandProfile.roles.map((role) => (
+                  <li key={role} className="flex items-start gap-2 text-xs leading-snug text-graphite sm:text-[13px]">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-primary" aria-hidden="true" />
+                    {role}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
         </div>

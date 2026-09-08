@@ -9,10 +9,12 @@ const navItems: NavItem[] = [
   { label: 'Journey', href: '#journey' },
   { label: 'Ventures', href: '#ventures' },
   { label: 'Investments', href: '#investments' },
+  { label: 'Awards', href: '#awards' },
+  { label: 'Media', href: '#media' },
   { label: 'Contact', href: '#contact' },
 ];
 
-const observableIds = ['top', 'about', 'journey', 'ventures', 'investments', 'contact'];
+const observableIds = ['top', 'about', 'journey', 'ventures', 'investments', 'awards', 'media', 'contact'];
 const SCROLL_THRESHOLD = 24;
 
 export default function Navbar() {

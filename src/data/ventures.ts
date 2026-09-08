@@ -116,6 +116,17 @@ export interface OtherVenture {
   description: string;
   category: string;
   role?: string;
+  /** Optional — year the venture was founded/established, shown as a small
+   *  badge on the card and in the detail modal (e.g. '2000'). */
+  foundedYear?: string;
+  /** Optional — path to a real logo/photo (e.g. '/images/ventures/deepee.png').
+   *  Leave unset and the card falls back to the category-accent top bar only. */
+  logo?: string;
+  /** Optional — live corporate site/page. Leave unset to hide the link. */
+  website?: string;
+  /** Optional — 2-4 short highlight bullets shown in the detail modal
+   *  (e.g. 'Refines 100+ tons of edible oil daily'). */
+  highlights?: string[];
 }
 
 export const otherVentures: OtherVenture[] = [
@@ -126,6 +137,11 @@ export const otherVentures: OtherVenture[] = [
       'Feed, premix, and solvent extraction, alongside edible oil refining \u2014 a separate manufacturing base steadily building share in Nepal\u2019s food processing sector.',
     category: 'Food Processing',
     role: 'Managing Director',
+    highlights: [
+      'Solvent extraction and edible oil refining under one roof',
+      'Feed and premix production supporting Nepal\u2019s livestock sector',
+      'Led directly by Anand Bagaria as Managing Director',
+    ],
   },
   {
     id: 'deepee',
@@ -133,6 +149,10 @@ export const otherVentures: OtherVenture[] = [
     description:
       'A consumer brand in animal nutrition and food products \u2014 known across Nepal for quality and reliability, with ambitions to grow beyond its borders.',
     category: 'Consumer Brand',
+    highlights: [
+      'Established consumer trust across animal nutrition and food products',
+      'Distribution footprint spanning households across Nepal',
+    ],
   },
   {
     id: 'progeochem-industries',
@@ -140,6 +160,11 @@ export const otherVentures: OtherVenture[] = [
     description:
       'Established in 2000 as National Polyplast, manufacturing poly-woven fabrics \u2014 an early move from trading into industrial production.',
     category: 'Manufacturing',
+    foundedYear: '2000',
+    highlights: [
+      'Originally founded as National Polyplast',
+      'One of the earliest moves from trading into industrial manufacturing',
+    ],
   },
   {
     id: 'nepal-gas',
@@ -147,6 +172,10 @@ export const otherVentures: OtherVenture[] = [
     description:
       'A move into the LPG business, extending distribution strength from agriculture and FMCG into household energy.',
     category: 'Energy',
+    highlights: [
+      'Extends existing distribution strength into household energy',
+      'LPG supply reaching households across Nepal',
+    ],
   },
   {
     id: 'shreenagar-agro',
@@ -154,5 +183,9 @@ export const otherVentures: OtherVenture[] = [
     description:
       'An independent agribusiness venture reinforcing a farm-to-market presence across Nepal, distinct from the Nimbus group.',
     category: 'Agribusiness',
+    highlights: [
+      'Independent farm-to-market agribusiness operation',
+      'Operated separately from the Nimbus ecosystem',
+    ],
   },
 ];

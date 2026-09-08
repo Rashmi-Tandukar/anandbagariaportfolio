@@ -5,6 +5,8 @@ import AboutPreview from '../components/home/AboutPreview';
 import Journey from '../components/home/Journey';
 import Ventures from '../components/home/ventures';
 import Investments from '../components/home/investments';
+import Awards from '../components/home/Awards';
+import Media from '../components/home/Media';
 import ContactCTA from '../components/home/ContactCTA';
 
 export default function Home() {
@@ -17,6 +19,8 @@ export default function Home() {
         <Journey />
         <Ventures />
         <Investments />
+        <Awards />
+        <Media />
         <ContactCTA />
       </main>
       <Footer />

@@ -32,7 +32,7 @@ export default function Investments() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="investments" className="relative overflow-hidden bg-canvas px-[5vw] py-24 sm:py-32">
+    <section id="investments" className="relative overflow-hidden bg-canvas px-[5vw] py-16 sm:py-24">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-[-8%] top-[5%] h-[340px] w-[340px] rounded-full bg-gold/[0.07] blur-[120px]" />
         <div className="absolute right-[-10%] bottom-[8%] h-[380px] w-[380px] rounded-full bg-forest/[0.09] blur-[130px]" />
